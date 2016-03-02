@@ -1,0 +1,27 @@
+body {
+margin: auto;
+}
+#accordion {
+	border: 1px solid silver;
+	border-radius: 5px;
+	height: auto;
+	width: 500px;
+}
+h3 {
+	border: 1px solid silver;
+	border-radius: 2px;
+	font: bold 14px Tahoma;
+	padding: 10px 5px;
+	color: darkblue;
+	margin:0;
+}
+h3:hover {
+	border: 1px solid darkblue;
+	background-color: lightgray;
+
+}
+div{
+	font: bold 12px Tahoma;
+	padding: 10px 5px;
+	color: #081b89;
+}
