@@ -1,0 +1,68 @@
+body {
+	width: 100%;
+ 	height: 100%;
+	font: 16px Arial;
+	margin: 0;
+	background: url(../images/beach.jpg)  no-repeat;
+	background-size: 100%;
+	color: #FFF;
+}
+h1{
+	color: #FFF;
+	font: bold italic 400% serif;;
+}
+
+#visitor {
+	position: relative;
+	display: inline-block;
+ 	float: left;
+    	margin: 20px 0 0 20%;
+}
+#computer {
+	position: relative;
+	display: inline-block;
+     float: right;
+     margin: 20px 20% 0 0;
+}
+#info {
+	position: relative;
+	display: inline-block;
+ 	margin: 0;
+ 	color: #0000CD;
+}
+.ship {
+	background: #0000CD;
+	border-color: #1E90FF;
+}
+.shiphit {
+	background: #B22222;
+	border-color: #1E90FF;
+}
+.miss {
+	background: #87CEFA;
+}
+td {
+	border:  4px groove #FFF;
+	width: 20px;
+ 	height: 20px;
+}
+#computer td:hover {
+	border:  4px groove #009;
+}
+
+button {
+	border:  4px outset #FFF;
+	color: #009;
+	font: bold 16px Arial;
+	background: #D3D3D3;
+	padding: 3px;
+	margin: 3px;
+}
+button:hover {
+	border:  4px outset #009;
+	color: #FFF;
+	font: bold  16px Arial;
+	background: #009;
+	padding: 3px;
+	margin: 3px;
+}
