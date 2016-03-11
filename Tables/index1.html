@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body {
+		margin: 0;
+	}
+	</style>
+</head>
+<body>
+
+	<table>
+		<tr>
+			<td>01</td>
+			<td>02</td>
+			<td>03</td>
+			<td>04</td>
+			<td>05</td>
+			<td>06</td>
+			<td>07</td>
+			<td>08</td>
+			<td>09</td>
+			<td>10</td>
+		</tr>
+		<tr>
+			<td>01</td>
+			<td>02</td>
+			<td>03</td>
+			<td>04</td>
+			<td>05</td>
+			<td>06</td>
+			<td>07</td>
+			<td>08</td>
+			<td>09</td>
+			<td>10</td>
+		</tr>
+		<tr>
+			<td>01</td>
+			<td>02</td>
+			<td>03</td>
+			<td>04</td>
+			<td>05</td>
+			<td>06</td>
+			<td>07</td>
+			<td>08</td>
+			<td>09</td>
+			<td>10</td>
+		</tr>
+		<tr>
+			<td>01</td>
+			<td>02</td>
+			<td>03</td>
+			<td>04</td>
+			<td>05</td>
+			<td>06</td>
+			<td>07</td>
+			<td>08</td>
+			<td>09</td>
+			<td>10</td>
+		</tr>
+		<tr>
+			<td>01</td>
+			<td>02</td>
+			<td>03</td>
+			<td>04</td>
+			<td>05</td>
+			<td>06</td>
+			<td>07</td>
+			<td>08</td>
+			<td>09</td>
+			<td>10</td>
+		</tr>
+		<tr>
+			<td>01</td>
+			<td>02</td>
+			<td>03</td>
+			<td>04</td>
+			<td>05</td>
+			<td>06</td>
+			<td>07</td>
+			<td>08</td>
+			<td>09</td>
+			<td>10</td>
+		</tr>
+		<tr>
+			<td>01</td>
+			<td>02</td>
+			<td>03</td>
+			<td>04</td>
+			<td>05</td>
+			<td>06</td>
+			<td>07</td>
+			<td>08</td>
+			<td>09</td>
+			<td>10</td>
+		</tr>
+		<tr>
+			<td>01</td>
+			<td>02</td>
+			<td>03</td>
+			<td>04</td>
+			<td>05</td>
+			<td>06</td>
+			<td>07</td>
+			<td>08</td>
+			<td>09</td>
+			<td>10</td>
+		</tr>
+		<tr>
+			<td>01</td>
+			<td>02</td>
+			<td>03</td>
+			<td>04</td>
+			<td>05</td>
+			<td>06</td>
+			<td>07</td>
+			<td>08</td>
+			<td>09</td>
+			<td>10</td>
+		</tr>
+		<tr>
+			<td>01</td>
+			<td>02</td>
+			<td>03</td>
+			<td>04</td>
+			<td>05</td>
+			<td>06</td>
+			<td>07</td>
+			<td>08</td>
+			<td>09</td>
+			<td>10</td>
+		</tr>
+	</table>
+<button id="click">click me</button>
+
+	<script>
+	var table = document.querySelector('table');
+	table.style.position = 'absolute';
+	table.style.left = (document.documentElement.clientWidth/2) - (table.clientWidth/2) + 'px';
+	table.style.top = (document.documentElement.clientHeight/2) - (table.clientHeight/2) + 'px';
+
+
+	var timer;
+	var rand = function (min, max) {//ТОЛЬКО для целых чисел
+		var min = min || 0;
+		var max = max + 1 || 1;
+		var rnd = 0;
+		do rnd = Math.floor((Math.random() * (max - min)) + min)
+		while (rnd == 0);
+		return rnd;
+	}
+	function explose() {
+		var tds = document.querySelectorAll('td');
+		var config = [];
+		for (var j = 0; j <  tds.length; j++) {
+			config.push({
+				td: tds[j],
+				top: tds[j].offsetTop,
+				left: tds[j].offsetLeft,
+				directionTop: rand(-1, 1),
+				directionLeft: rand(-1, 1),
+				speed: rand(1, 5)
+			});
+		}
+		for (var i = 0; i <  tds.length; i++) {
+			tds[i].style.position = 'absolute';
+			tds[i].style.top = config[i].top + "px";
+			tds[i].style.left = config[i].left + "px";
+		}
+		animate();
+		function animate () {
+			timer = setInterval(function() {
+				for (var i = 0; i <  config.length; i++) {
+						config[i].td.style.top = (config[i].directionTop > 0) ?
+						(parseInt(config[i].td.style.top) - config[i].speed + 'px') :
+						(parseInt(config[i].td.style.top) + config[i].speed + 'px');
+
+					config[i].td.style.left = (config[i].directionLeft > 0) ?
+					(parseInt(config[i].td.style.left) - config[i].speed + 'px') :
+						(parseInt(config[i].td.style.left) + config[i].speed + 'px');
+
+					if (config[i].td.getBoundingClientRect().bottom <= 0 ||
+							config[i].td.getBoundingClientRect().top >= document.body.clientHeigth ||
+							config[i].td.getBoundingClientRect().right <= 0 ||
+							config[i].td.getBoundingClientRect().left >= document.body.clientWidth
+							) {
+						config.splice(i, 1);
+					}
+					if (config.length == 0)
+						clearInterval(timer);
+				}
+				for (var j = 0; j <  tds.length; j++) { // чтобы изенить направление и скорость
+					config[j].directionTop = rand(-1, 1);
+					config[j].directionLeft = rand(-1, 1);
+					config[j].speed = rand(1, 5);
+				}
+			}, 10);
+		}
+	}
+	explose();
+
+	document.querySelector('#click').onclick = function() {
+		clearInterval(timer);
+	}
+</script>
+</body>
+</html>
